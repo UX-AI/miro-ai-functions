@@ -2,9 +2,26 @@
 const axios = require('axios');
 
 exports.handler = async (event) => {
+  // Handle preflight OPTIONS request (for CORS)
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+      body: '',
+    };
+  }
+
+  // Allow only POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Adjust as needed
+      },
       body: JSON.stringify({ error: 'Method Not Allowed' }),
     };
   }
@@ -12,6 +29,10 @@ exports.handler = async (event) => {
   try {
     const { prompt } = JSON.parse(event.body);
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+    if (!OPENAI_API_KEY) {
+      throw new Error('OpenAI API key is not configured.');
+    }
 
     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
       model: 'gpt-4',
@@ -28,13 +49,19 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ text })
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Adjust as needed
+      },
+      body: JSON.stringify({ text }),
     };
   } catch (error) {
     console.error('Error in generate function:', error.response ? error.response.data : error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Error generating text' })
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Adjust as needed
+      },
+      body: JSON.stringify({ error: 'Error generating text' }),
     };
   }
 };
