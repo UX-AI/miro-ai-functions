@@ -1,0 +1,5 @@
+[build]
+  functions = "functions"
+  publish = "."
+
+# Removed the incorrect redirects block
