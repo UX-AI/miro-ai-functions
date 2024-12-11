@@ -3,3 +3,5 @@
 
 # Environment Variables
 .env
+# Local Netlify folder
+.netlify
