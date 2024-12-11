@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 405,
       headers: {
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ error: 'Method Not Allowed' }),
     };
@@ -35,7 +35,7 @@ exports.handler = async (event) => {
     }
 
     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-      model: 'gpt-4',
+      model: 'gpt-4', // Ensure you have access to this model
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.7,
     }, {
@@ -50,7 +50,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ text }),
     };
@@ -59,7 +59,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       headers: {
-        'Access-Control-Allow-Origin': '*', // Adjust as needed
+        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ error: 'Error generating text' }),
     };
