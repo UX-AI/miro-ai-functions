@@ -35,7 +35,7 @@ exports.handler = async (event) => {
     }
 
     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-      model: 'gpt-4o', // Ensure you have access to this model
+      model: 'o1-mini', // Ensure you have access to this model
       messages: [{ role: 'user', content: prompt }],
       temperature: 0.7,
     }, {
