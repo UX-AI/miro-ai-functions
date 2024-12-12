@@ -1,5 +1,12 @@
-document.getElementById('generate').addEventListener('click', async () => {
+// Initialize the Miro SDK
+miro.onReady(() => {
+    console.log('Miro SDK is ready');
+  });
+  
+  // Handle the Generate button click
+  document.getElementById('generate').addEventListener('click', async () => {
     const prompt = document.getElementById('prompt').value;
+  
     if (!prompt) {
       alert('Please enter a prompt!');
       return;
@@ -17,16 +24,12 @@ document.getElementById('generate').addEventListener('click', async () => {
     const data = await response.json();
     const generatedText = data.text;
   
-    // Show the generated text in the sidebar
-    const outputDiv = document.getElementById('output');
-    outputDiv.textContent = generatedText;
-  
-    // Add the content to the Miro board
+    // Add the generated text as a widget to the Miro board
     await miro.board.widgets.create({
       type: 'text',
       text: generatedText,
-      x: 0,
-      y: 0,
+      x: 100, // Adjust position on the board
+      y: 100,
     });
   
     alert('Generated content added to the board!');
