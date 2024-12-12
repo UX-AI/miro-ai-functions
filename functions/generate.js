@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
+        'Access-Control-Allow-Origin': 'https://cheerful-hamster-bdd9d7.netlify.app', // Replace with your actual front-end domain
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 405,
       headers: {
-        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
+        'Access-Control-Allow-Origin': 'https://cheerful-hamster-bdd9d7.netlify.app', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ error: 'Method Not Allowed' }),
     };
@@ -50,7 +50,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
+        'Access-Control-Allow-Origin': 'https://cheerful-hamster-bdd9d7.netlify.app', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ text }),
     };
@@ -59,7 +59,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       headers: {
-        'Access-Control-Allow-Origin': 'https://your-frontend-domain.com', // Replace with your actual front-end domain
+        'Access-Control-Allow-Origin': 'https://cheerful-hamster-bdd9d7.netlify.app', // Replace with your actual front-end domain
       },
       body: JSON.stringify({ error: 'Error generating text' }),
     };
