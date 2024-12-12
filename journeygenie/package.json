@@ -1,0 +1,16 @@
+{
+  "name": "journeygenie",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@mirohq/miro-api": "^2.2.2",
+    "@mirohq/websdk-types": "^2.16.1"
+  }
+}
